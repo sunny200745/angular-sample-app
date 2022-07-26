@@ -1,0 +1,51 @@
+<div class="container">
+    <h3>Search functionality with Observables</h3>
+    <p>Problem Statement: If we observe while making our search, we notice each letter we type fire’s a request to the
+        server and we don’t want it to fire a request immediately we type. We want it to delay a little before sending a
+        request because we may be typing a long word. To handle this, we need to import debounceTime and
+        distinctUntilChanged.</p>
+    <ul>
+        <li>debounceTime : The debounceTime operator emits the latest value and helps in delaying the values transmitted
+            by the root Observable for the specified time.</li>
+        <li> distinctUntilChanged : The distinctUntilChanged Returns an observable series that carries only
+            distinguished adjacent elements according to the key selector and the compare.</li>
+        <li>
+            finalize : RxJS finalize operator which will help you to stop the loader / anything that we put in finalize
+            case in both cases, when the observable execution completes in success or when it fails.
+        </li>
+    </ul>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h1>Search to know more about your favourite books</h1>
+            <input [formControl]="queryField" id="keyword" type="search" class="form-control">
+        </div>
+    </div>
+
+    <div class="text-center" *ngIf="loading$ | async">
+        <div class="spinner-border" role="status">
+        </div>
+    </div>
+
+    <div class="contents">
+        <div class="container-fluid mt-4">
+            <div *ngIf="items" class="col-12 mt-5">
+                <div class="row justify-content-around">
+                    <div *ngFor="let product of items" class="col-lg-3 col-md-6 col-sm-12 book-display">
+                        <div class="image">
+                            <img *ngIf="product.volumeInfo.imageLinks" src="{{product.volumeInfo.imageLinks.thumbnail}}"
+                                alt="" />
+                        </div>
+                        <div *ngFor="let aut of product.volumeInfo.authors">
+                            <span> Authors: {{ aut }}</span>
+                        </div>
+                        <div class="details">
+                            <span>Title: {{ product.volumeInfo.title }}</span> <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
