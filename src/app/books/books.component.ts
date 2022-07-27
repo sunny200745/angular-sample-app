@@ -25,8 +25,11 @@ export class BooksComponent implements OnInit {
   queryField: FormControl = new FormControl();
   items: any;
   loading$: Observable<boolean>;
-  sampleTodoList: sampleTodo[] | undefined;
-
+  sampleTodoList: sampleTodo[] = [];
+  displayedTodoList:sampleTodo[] = [];
+  allPages:number | undefined;
+  itemsPerPage:number  = 10;
+  
   constructor(
     private formBuilder: FormBuilder, 
     private apiService: ApiService, 
@@ -62,9 +65,17 @@ export class BooksComponent implements OnInit {
 
   getSampleData() {
     this.apiService.getSampleToDoList().subscribe((list:any) => {
-      console.log(list)
       this.sampleTodoList = list;
+      this.onPageChange();
+      this.allPages = Math.ceil(this.sampleTodoList.length / this.itemsPerPage);
     })
+  }
+  
+  onPageChange(page: number = 1):void {
+    const startItem = (page - 1) * this.itemsPerPage;
+    const endItem = page * this.itemsPerPage;
+    this.displayedTodoList = this.sampleTodoList.slice(startItem, endItem)
+    console.log('Sample sdata--->', this.displayedTodoList)
   }
 
 }

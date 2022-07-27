@@ -14,36 +14,38 @@
             case in both cases, when the observable execution completes in success or when it fails.
         </li>
     </ul>
-    
+
     <div class="p-5 mb-4 bg-light border rounded-3">
         <h1 class="display-4">Sample Todo List</h1>
-        <p class="lead">This is a simple place holder to fetch data from api using a button, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <p class="lead">This is a simple place holder to fetch data from api using a button, a simple jumbotron-style
+            component for calling extra attention to featured content or information.</p>
         <hr class="my-4">
         <p class="lead">
             <button type="button" class="btn btn-info" (click)="getSampleData()">Button to fetch data</button>
         </p>
-        <table class="table table-striped">
+        <table class="table table-striped" *ngIf="displayedTodoList.length">
             <thead>
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Title</th>
-                <th scope="col">UserId</th>
-                <th scope="col">Completed</th>
-              </tr>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">UserId</th>
+                    <th scope="col">Completed</th>
+                </tr>
             </thead>
             <tbody>
-              
-                <tr *ngFor="let list of sampleTodoList">
+
+                <tr *ngFor="let list of displayedTodoList">
                     <td>{{list.id}}</td>
                     <td>{{list.title}}</td>
                     <td>{{list.userId}}</td>
                     <td>{{list.completed}}</td>
                 </tr>
             </tbody>
-          </table>
+        </table>
+        <app-pagination [allPagesNumber]="allPages" (changePage)="onPageChange($event)" *ngIf="displayedTodoList.length"></app-pagination>
 
     </div>
-      
+
 
     <div class="row justify-content-center align-items-center">
         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -51,8 +53,6 @@
             <input [formControl]="queryField" id="keyword" type="search" class="form-control">
         </div>
     </div>
-    
-    
 
     <div class="contents">
         <div class="container-fluid mt-4">
