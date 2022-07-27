@@ -14,17 +14,45 @@
             case in both cases, when the observable execution completes in success or when it fails.
         </li>
     </ul>
+    
+    <div class="p-5 mb-4 bg-light border rounded-3">
+        <h1 class="display-4">Sample Todo List</h1>
+        <p class="lead">This is a simple place holder to fetch data from api using a button, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p class="lead">
+            <button type="button" class="btn btn-info" (click)="getSampleData()">Button to fetch data</button>
+        </p>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">UserId</th>
+                <th scope="col">Completed</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr *ngFor="let list of sampleTodoList">
+                    <td>{{list.id}}</td>
+                    <td>{{list.title}}</td>
+                    <td>{{list.userId}}</td>
+                    <td>{{list.completed}}</td>
+                </tr>
+            </tbody>
+          </table>
+
+    </div>
+      
+
     <div class="row justify-content-center align-items-center">
         <div class="col-lg-12 col-md-12 col-sm-12">
             <h1>Search to know more about your favourite books</h1>
             <input [formControl]="queryField" id="keyword" type="search" class="form-control">
         </div>
     </div>
-
-    <div class="text-center" *ngIf="loading$ | async">
-        <div class="spinner-border" role="status">
-        </div>
-    </div>
+    
+    
 
     <div class="contents">
         <div class="container-fluid mt-4">
