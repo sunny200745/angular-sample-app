@@ -17,4 +17,13 @@ export class LoadingService {
   // setLoadingValue(){
   //   this._loading.next(false);
   // }
+
+  showLoader(){
+    this._loading.next(true);
+  }
+
+  hideLoader(){
+    this._loading.next(false);
+  }
+
 }

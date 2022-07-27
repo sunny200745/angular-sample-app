@@ -1,11 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, finalize } from "rxjs/operators";
+import { debounceTime, distinctUntilChanged, finalize } from "rxjs/operators";
 
 
 import { ApiService } from '../api.service';
 import { LoadingService } from '../loading.service';
+
+
+interface sampleTodo {
+  userId: number,
+  id: number,
+  title: string,
+  completed: boolean
+}
 
 @Component({
   selector: 'app-books',
@@ -14,10 +22,11 @@ import { LoadingService } from '../loading.service';
 })
 export class BooksComponent implements OnInit {
 
-  // isLoading: boolean | undefined;
   queryField: FormControl = new FormControl();
   items: any;
   loading$: Observable<boolean>;
+  sampleTodoList: sampleTodo[] | undefined;
+
   constructor(
     private formBuilder: FormBuilder, 
     private apiService: ApiService, 
@@ -27,6 +36,8 @@ export class BooksComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
     this.queryField.valueChanges
     .pipe(
         debounceTime(1000), 
@@ -49,4 +60,12 @@ export class BooksComponent implements OnInit {
       })
   }
 
+  getSampleData() {
+    this.apiService.getSampleToDoList().subscribe((list:any) => {
+      console.log(list)
+      this.sampleTodoList = list;
+    })
+  }
+
 }
+
