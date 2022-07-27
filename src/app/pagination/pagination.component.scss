@@ -1,0 +1,17 @@
+.pagination {
+    justify-content: center;
+
+    .pageNumber {
+        margin: 6px 40px;
+    }
+    .page-link {
+        cursor: pointer;
+    }
+    
+    .pagination__button--disabled {
+        color: #CCCCCC;
+        cursor: none;
+        opacity: .65;
+        pointer-events: none;
+    }
+}

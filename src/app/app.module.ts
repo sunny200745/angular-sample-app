@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { ApiService } from './api.service';
 import { LoaderComponent } from './loader/loader.component';
 import { LoaderInterceptorService } from './loader-interceptor.service';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { LoaderInterceptorService } from './loader-interceptor.service';
     FooterComponent,
     HomeComponent,
     LoaderComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
