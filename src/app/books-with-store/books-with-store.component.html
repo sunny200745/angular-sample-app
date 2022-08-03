@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="p-5 mb-4 bg-light border rounded-3">
+        <h3 class="display-4">Simple NgRx Example</h3>
+        <div class="card" style="width: 10rem;">
+            Current Count: {{ count$ | async}}
+        </div>
+        <div class="btn-group">
+
+            <button type="button" class="btn btn-success" (click)="increment()">Increment Button </button>
+            <button type="button" class="btn btn-danger" (click)="decrement()">Decrement Button</button>
+            <button type="button" class="btn btn-warning" (click)="reset()">Reset Button</button>
+        </div>
+    </div>
+</div>
