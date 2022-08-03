@@ -20,10 +20,14 @@ export class BooksWithPromiseComponent implements OnInit {
   displayedTODOList: sampleTODO[] = [];
   allPages: number | undefined;
   itemsPerPage: number = 10;
+  promiseOutput: any = "";
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.simplePromiseExample().then((val)=>{
+      this.promiseOutput = val;
+    });
   }
 
   getSampleData() {
@@ -43,6 +47,19 @@ export class BooksWithPromiseComponent implements OnInit {
     const startItem = (page - 1) * this.itemsPerPage;
     const endItem = page * this.itemsPerPage;
     this.displayedTODOList = this.sampleTODOList.slice(startItem, endItem)
+  }
+
+  simplePromiseExample() {
+    let task:boolean = true;
+    return new Promise((resolve, reject)=> {
+      setTimeout(()=>{
+        if(task){
+          resolve("Task complete after 2 sec")
+        } else {
+          reject ('Task rejected after 2 sec')
+        }
+      },2000)
+    });
   }
 
 }
