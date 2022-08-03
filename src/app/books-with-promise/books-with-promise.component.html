@@ -1,0 +1,39 @@
+<div class="p-5 mb-4 bg-light border rounded-3">
+
+</div>
+
+<div class="p-5 mb-4 bg-light border rounded-3">
+    <h1 class="display-4">Sample Todo List</h1>
+    <p class="lead">In this example we fetched the todo via Angular Promises, Since .toPromise() is deprecated we used
+        lastValueFrom and firstValueFrom. Since the call is synchromous there is no difference between the both, otherwise </p>
+    <ul>
+        <li>lastValueFrom : It will resolve the Promise once complete() gets called.</li>
+        <li> firstValueFrom : It will resolve the Promise once next(...) gets called.</li>
+    </ul>
+    <hr class="my-4">
+    <p class="lead">
+        <button type="button" class="btn btn-info" (click)="getSampleData()">Button to fetch data</button>
+    </p>
+    <table class="table table-striped" *ngIf="displayedTODOList.length">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">UserId</th>
+                <th scope="col">Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let list of displayedTODOList">
+                <td>{{list.id}}</td>
+                <td>{{list.title}}</td>
+                <td>{{list.userId}}</td>
+                <td>{{list.completed}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <app-pagination [allPagesNumber]="allPages" (changePage)="onPageChange($event)" *ngIf="displayedTODOList.length">
+    </app-pagination>
+
+</div>
