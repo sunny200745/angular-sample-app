@@ -14,6 +14,9 @@ import { LoaderComponent } from './loader/loader.component';
 import { LoaderInterceptorService } from './loader-interceptor.service';
 import { PaginationComponent } from './pagination/pagination.component';
 import { BooksWithPromiseComponent } from './books-with-promise/books-with-promise.component';
+import { StoreModule } from '@ngrx/store';
+import { BooksWithStoreComponent  } from './books-with-store/books-with-store.component';
+import { counterReducer } from './counter.reducer';
 
 
 @NgModule({
@@ -26,13 +29,15 @@ import { BooksWithPromiseComponent } from './books-with-promise/books-with-promi
     LoaderComponent,
     PaginationComponent,
     BooksWithPromiseComponent,
+    BooksWithStoreComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({count: counterReducer}),
   ],
   providers: [
     ApiService, 
