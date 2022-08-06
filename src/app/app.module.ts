@@ -17,6 +17,10 @@ import { BooksWithPromiseComponent } from './books-with-promise/books-with-promi
 import { StoreModule } from '@ngrx/store';
 import { BooksWithStoreComponent  } from './books-with-store/books-with-store.component';
 import { counterReducer } from './counter.reducer';
+import { booksReducer } from './state/books.reducer';
+import { collectionReducer } from './state/collection.reducer';
+import { BookListComponent } from './book-list/book-list.component';
+import { BookCollectionComponent } from './book-collection/book-collection.component';
 
 
 @NgModule({
@@ -30,6 +34,8 @@ import { counterReducer } from './counter.reducer';
     PaginationComponent,
     BooksWithPromiseComponent,
     BooksWithStoreComponent,
+    BookListComponent,
+    BookCollectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,13 @@ import { counterReducer } from './counter.reducer';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({count: counterReducer}),
+    StoreModule.forRoot(
+      {
+        count: counterReducer,
+        books: booksReducer,
+        collection: collectionReducer
+      }
+      ),
   ],
   providers: [
     ApiService, 
