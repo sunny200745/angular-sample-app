@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { Book } from '../book-list/books.model';
-import { addBook, removeBook } from './books.actions';
+import { addBook, removeBook } from '../actions/books.actions';
 
 
 export const collectionFeatureKey = 'collection';

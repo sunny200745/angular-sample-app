@@ -16,11 +16,13 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { BooksWithPromiseComponent } from './books-with-promise/books-with-promise.component';
 import { StoreModule } from '@ngrx/store';
 import { BooksWithStoreComponent  } from './books-with-store/books-with-store.component';
-import { counterReducer } from './counter.reducer';
-import { booksReducer } from './state/books.reducer';
-import { collectionReducer } from './state/collection.reducer';
+import { counterReducer } from './reducers/counter.reducer';
+import { booksReducer } from './reducers/books.reducer';
+import { collectionReducer } from './reducers/collection.reducer';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookCollectionComponent } from './book-collection/book-collection.component';
+import { LikeDislikeComponent } from './like-dislike/like-dislike.component';
+import { likeDislikeReducer } from './reducers/like-dislike.reducer';
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { BookCollectionComponent } from './book-collection/book-collection.compo
     BooksWithStoreComponent,
     BookListComponent,
     BookCollectionComponent,
+    LikeDislikeComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { BookCollectionComponent } from './book-collection/book-collection.compo
       {
         count: counterReducer,
         books: booksReducer,
-        collection: collectionReducer
+        collection: collectionReducer,
+        likeDislike: likeDislikeReducer
       }
       ),
   ],
