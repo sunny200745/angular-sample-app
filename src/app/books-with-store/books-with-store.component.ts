@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { increment, decrement, reset } from '../counter.actions';
-import { addBook, removeBook, retrievedBookList } from '../state/books.actions';
+import { increment, decrement, reset } from '../actions/counter.actions';
+import { addBook, removeBook, retrievedBookList } from '../actions/books.actions';
 import { ApiService } from '../api.service';
 import { selectBookCollection, selectBooks } from '../state/books.selectors';
 

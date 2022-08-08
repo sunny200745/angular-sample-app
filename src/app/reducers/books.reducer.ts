@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { retrievedBookList } from './books.actions';
+import { retrievedBookList } from '../actions/books.actions';
 import { Book } from '../book-list/books.model';
 import { state } from '@angular/animations';
 
