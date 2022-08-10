@@ -3,12 +3,6 @@ import { Book } from '../book-list/books.model';
 import { addBook, removeBook } from '../actions/books.actions';
 
 
-export const collectionFeatureKey = 'collection';
-
-export interface State {
-
-}
-
 export const initialState: ReadonlyArray<string> = [];
 
 export const collectionReducer = createReducer(
