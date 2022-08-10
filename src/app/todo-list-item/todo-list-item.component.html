@@ -1,0 +1,12 @@
+<li class="todo-list-item">
+
+    <div class="card" *ngIf="!todo?.isEditabled && todo?.isVisible">
+        <div class="card-body">
+            <h5 class="card-title">Todo Item</h5>
+            <p class="card-text" [class.completed]="todo.isCompleted">{{todo.text}}</p>
+            <button type="button" class="btn btn-success" (click)="onCompletedTodo(todo)" >Done </button>
+            <button type="button" class="btn btn-danger" (click)="onEditTodo(todo)">Edit</button>
+            <button type="button" class="btn btn-warning" (click)="onDeletedTodo(todo)" >Delete</button>
+        </div>
+    </div>  
+</li>

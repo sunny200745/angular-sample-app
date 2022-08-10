@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="p-5 mb-4 bg-light border rounded-3">
+        Sample Todo Example using NgRx
+        <br/>
+        <app-new-todo (onCreateTodo)="onAddTodo($event)"></app-new-todo>
+        <br/>
+        <br/>
+        <app-todo-list
+            [todos]="todos | async"
+            (completedTodo)="onCompletedTodo($event)"
+            (deletedTodo)="onDeletedTodo($event)"
+            (editTodo)="onEditTodo($event)"
+            (updateTodo)="onUpdateTodo($event)"
+
+        ></app-todo-list>
+        <br/>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" [value]="'All'" (click)="onShow('All')" checked="true">
+            <label class="form-check-label" for="inlineRadio1" >All</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" [value]="'Pending'" (click)="onShow('Pending')">
+            <label class="form-check-label" for="inlineRadio2" >Pending</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" [value]="'Complete'" (click)="onShow('Complete')">
+            <label class="form-check-label" for="inlineRadio3" >Complete</label>
+        </div>
+    </div>
+</div>
