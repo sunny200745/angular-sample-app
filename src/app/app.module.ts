@@ -29,7 +29,9 @@ import { TodoListItemComponent } from './todo-list-item/todo-list-item.component
 import { NewTodoComponent } from './new-todo/new-todo.component';
 import { reducers } from './store/reducers.model';
 import { INITIAL_STATE } from './store/store.models';
-
+import { StarWarsComponent } from './star-wars/star-wars.component';
+import { StarwarsEffectsEffects } from './effects/starwars-effects.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { INITIAL_STATE } from './store/store.models';
     TodoListComponent,
     TodoListItemComponent,
     NewTodoComponent,
+    StarWarsComponent,
 
   ],
   imports: [
@@ -57,6 +60,7 @@ import { INITIAL_STATE } from './store/store.models';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    EffectsModule.forRoot([StarwarsEffectsEffects]),
     StoreModule.forRoot(
       reducers,
       {

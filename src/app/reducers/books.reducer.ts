@@ -6,9 +6,9 @@ import { state } from '@angular/animations';
 
 
 
-export const initialState : ReadonlyArray<Book> = [];
+export const initialState: ReadonlyArray<Book> = [];
 
 export const booksReducer = createReducer(
   initialState,
-  on(retrievedBookList, (state, {books})=> books)
+  on(retrievedBookList, (state, { books }) => books)
 );
